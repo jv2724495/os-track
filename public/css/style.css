@@ -1,105 +1,586 @@
-/* Variaveis de cor e de espacamento.
-   Este e o ponto de partida da identidade visual.
-   A partir da aula 2 voce troca estes valores pelas cores da sua assistencia. */
+/* ==========================================================================
+   OS Track | Folha de estilo unica do sistema
+   Aula 2: HTML e CSS
+
+   Ordem do arquivo:
+   1.  Variaveis (identidade visual)
+   2.  Reset e base
+   3.  Cabecalho e rodape
+   4.  Blocos e titulos
+   5.  Formularios
+   6.  Botoes
+   7.  Etiquetas de status
+   8.  Cartoes
+   9.  Grade de ordens
+   10. Tela de login
+   11. Responsividade
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIAVEIS
+   Tudo que define a identidade visual do sistema mora aqui dentro.
+   Trocar estes valores muda as tres telas ao mesmo tempo.
+
+   TODO A: substitua os valores abaixo pela identidade da SUA assistencia tecnica.
+   Os valores atuais sao propositalmente sem graca: um cinza neutro.
+   Escolha uma cor primaria, uma cor primaria escura para o estado hover,
+   e um par de fontes que combine com o negocio.
+   Sugestao de ferramentas: coolors.co para a paleta, fonts.google.com para a fonte.
+   ========================================================================== */
 :root {
-  --cor-fundo: #f4f5f7;
+  /* Cores da marca */
+  --cor-primaria: #5a6472;
+  --cor-primaria-escura: #454d59;
+  --cor-primaria-clara: #eceef1;
+
+  /* Cores de superficie e texto */
+  --cor-fundo: #f3f4f6;
   --cor-superficie: #ffffff;
-  --cor-texto: #1f2430;
-  --cor-texto-suave: #5b6472;
-  --cor-borda: #dfe3e8;
-  --cor-destaque: #2f5d8a;
+  --cor-texto: #1f2328;
+  --cor-texto-suave: #6b7280;
+  --cor-borda: #d7dae0;
 
-  --espaco-pequeno: 0.5rem;
-  --espaco-medio: 1.5rem;
-  --espaco-grande: 2.5rem;
+  /* Cor de acao destrutiva */
+  --cor-perigo: #b3261e;
 
-  --largura-maxima: 40rem;
+  /* Tipografia */
+  --fonte-titulo: Arial, Helvetica, sans-serif;
+  --fonte-texto: Arial, Helvetica, sans-serif;
+
+  /* Medidas reaproveitadas */
+  --raio: 10px;
+  --espaco: 16px;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --largura-maxima: 1100px;
 }
 
-/* Reset basico.
-   Faz com que padding e border sejam contados dentro da largura do elemento
-   e zera as margens e o preenchimento padrao do navegador. */
-*,
-*::before,
-*::after {
+
+/* ==========================================================================
+   2. RESET E BASE
+   A regra box-sizing: border-box faz padding e border entrarem na largura
+   declarada do elemento. Sem ela, uma caixa de 300px com 20px de padding
+   ocupa 340px na tela, e o layout quebra sem motivo aparente.
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Base da pagina.
-   Tipografia legivel, cores neutras e altura minima de tela cheia,
-   com o conteudo organizado em coluna para o rodape ficar embaixo. */
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--espaco-medio);
-  padding: var(--espaco-grande) var(--espaco-medio);
-
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--fonte-texto);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--cor-texto);
   background-color: var(--cor-fundo);
 }
 
-/* Cabecalho.
-   Titulo principal e subtitulo explicativo, centralizados. */
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.25;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.1rem; }
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ==========================================================================
+   3. CABECALHO E RODAPE
+   O cabecalho usa Flexbox: os itens ficam lado a lado, e justify-content
+   com space-between empurra a marca para a esquerda e o menu para a direita.
+   ========================================================================== */
 .cabecalho {
-  width: 100%;
-  max-width: var(--largura-maxima);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco);
+  flex-wrap: wrap;
+
+  padding: 14px 24px;
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marca-simbolo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.marca-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.marca-slogan {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu a {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.rodape {
+  padding: 20px 24px;
   text-align: center;
-}
-
-.cabecalho__titulo {
-  margin: 0 0 var(--espaco-pequeno);
-  font-size: 2.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--cor-destaque);
-}
-
-.cabecalho__subtitulo {
-  margin: 0;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--cor-texto-suave);
 }
 
-/* Conteudo principal.
-   Cartao branco simples, com borda discreta, para destacar o texto do fundo. */
+
+/* ==========================================================================
+   4. BLOCOS E TITULOS
+   ========================================================================== */
 .conteudo {
-  width: 100%;
   max-width: var(--largura-maxima);
-  padding: var(--espaco-medio);
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+
+.bloco {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.bloco-destaque {
+  background-color: var(--cor-primaria-clara);
+}
+
+.bloco h1,
+.bloco h2 {
+  margin-bottom: 8px;
+}
+
+.titulo-secao {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.contador {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.texto-apoio {
+  color: var(--cor-texto-suave);
+  margin-bottom: 18px;
+  max-width: 70ch;
+}
+
+.observacao {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+
+/* ==========================================================================
+   5. FORMULARIOS
+   ========================================================================== */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--cor-texto);
+  padding: 10px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: var(--cor-superficie);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 1px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--cor-primaria);
+}
+
+/* Grupo de checkboxes e de radios.
+   Aqui a direcao e horizontal, e nao vertical como no campo comum. */
+.grupo-opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.opcao input {
+  width: auto;
+  margin: 0;
+}
+
+.opcao label {
+  font-weight: normal;
+  font-size: 0.95rem;
+}
+
+/* Formulario de consulta publica: campo e botao lado a lado */
+.form-consulta {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-consulta .campo {
+  flex: 1 1 240px;
+  margin-bottom: 0;
+}
+
+/* Barra de filtros do painel */
+.barra-filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.barra-filtros .campo {
+  margin-bottom: 0;
+}
+
+.campo-cresce {
+  flex: 1 1 220px;
+}
+
+.acoes-form {
+  display: flex;
+  gap: 12px;
+}
+
+
+/* ==========================================================================
+   6. BOTOES
+   ========================================================================== */
+.botao {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.botao-principal {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.botao-principal:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+  background-color: transparent;
+  color: var(--cor-primaria);
+  border-color: var(--cor-borda);
+}
+
+.botao-secundario:hover {
+  background-color: var(--cor-primaria-clara);
+}
+
+.botao-perigo {
+  background-color: transparent;
+  color: var(--cor-perigo);
+  border-color: var(--cor-perigo);
+}
+
+.botao-perigo:hover {
+  background-color: var(--cor-perigo);
+  color: #ffffff;
+}
+
+.botao-largo {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   7. ETIQUETAS DE STATUS
+   A etiqueta e o unico ponto do sistema em que a cor carrega informacao.
+   Duas ja estao prontas como exemplo.
+
+   TODO B: escreva as cinco regras que faltam, seguindo o mesmo padrao das
+   duas primeiras. Uma sugestao de logica de cores, que voce pode trocar:
+   orcado e aprovado em tons de andamento, recusado em vermelho,
+   pronto e entregue em verde.
+   Classes que faltam:
+   .etiqueta-orcado
+   .etiqueta-aprovado
+   .etiqueta-recusado
+   .etiqueta-pronto
+   .etiqueta-entregue
+   ========================================================================== */
+.etiqueta {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.etiqueta-recebido {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.etiqueta-em-analise {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+
+/* ==========================================================================
+   8. CARTOES
+   ========================================================================== */
+.cartao-ordem,
+.cartao-resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   background-color: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
-  border-radius: 8px;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 18px;
 }
 
-.conteudo__texto {
-  margin: 0;
-  text-align: center;
+.cartao-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cartao-codigo {
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--cor-primaria);
+}
+
+.cartao-titulo {
+  font-size: 1.05rem;
+}
+
+.cartao-cliente {
+  font-size: 0.9rem;
   color: var(--cor-texto-suave);
 }
 
-/* Rodape.
-   Texto pequeno e discreto, sem concorrer com o conteudo. */
-.rodape {
+.cartao-defeito {
+  font-size: 0.92rem;
+}
+
+.lista-dados {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.linha-dado {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+
+.linha-dado dt {
+  color: var(--cor-texto-suave);
+}
+
+.linha-dado dd {
+  text-align: right;
+  font-weight: bold;
+}
+
+.cartao-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.cartao-acoes .botao {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+}
+
+
+/* ==========================================================================
+   9. GRADE DE ORDENS
+
+   TODO C: transforme a div com a classe grade-ordens em uma grade.
+   Sem esta regra os cartoes ficam empilhados, um embaixo do outro.
+   O que a regra precisa ter:
+   display: grid;
+   gap: 18px;
+   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+   A funcao minmax diz que cada coluna tem no minimo 280px e no maximo
+   uma fracao igual do espaco livre. O valor auto-fill diz ao navegador
+   para criar quantas colunas couberem. Junto, isso da uma grade que se
+   reorganiza sozinha, sem media query nenhuma.
+   ========================================================================== */
+.grade-ordens {
+  /* escreva a regra aqui */
+}
+
+
+/* ==========================================================================
+   10. TELA DE LOGIN
+   ========================================================================== */
+.pagina-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--cor-primaria);
+}
+
+.caixa-login {
   width: 100%;
-  max-width: var(--largura-maxima);
-  text-align: center;
+  max-width: 400px;
+  background-color: var(--cor-superficie);
+  border-radius: var(--raio);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 32px;
+}
 
-  font-size: 0.875rem;
+.marca-centralizada {
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--cor-primaria);
+}
+
+.marca-centralizada .marca-simbolo {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.caixa-login h1 {
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+
+.aviso-login,
+.voltar {
+  margin-top: 16px;
+  font-size: 0.85rem;
   color: var(--cor-texto-suave);
+  text-align: center;
 }
 
-.rodape p {
-  margin: 0;
-}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE
+
+   TODO D: escreva a media query para telas de ate 640px.
+   O que ela precisa ajustar, no minimo:
+   a) o cabecalho passa a empilhar a marca e o menu
+      .cabecalho { flex-direction: column; align-items: flex-start; }
+   b) o formulario de consulta passa a ocupar a largura toda
+      .form-consulta .botao { width: 100%; }
+   c) o padding do bloco diminui para 16px
+
+   Estrutura da media query:
+   @media (max-width: 640px) {
+     seletor { propriedade: valor; }
+   }
+
+   Teste com a ferramenta de dispositivo do navegador: tecla F12,
+   depois o icone de celular e tablet no canto superior da janela.
+   ========================================================================== */

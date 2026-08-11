@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel administrativo | OS Track</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="marca">
+      <span class="marca-simbolo">OS</span>
+      <div>
+        <p class="marca-nome">OS Track</p>
+        <p class="marca-slogan">Painel administrativo</p>
+      </div>
+    </div>
+    <nav class="menu">
+      <a href="index.html">Consulta pública</a>
+      <a href="login.html" class="link-sair">Sair</a>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+
+    <!--
+      BARRA DE FILTROS
+      Os filtros ainda nao filtram nada: eles existem para a interface ficar pronta.
+      Passam a funcionar na aula 6, quando a listagem vier do banco de dados.
+    -->
+    <section class="bloco">
+      <div class="titulo-secao">
+        <h1>Ordens de serviço</h1>
+        <span class="contador">4 ordens em aberto</span>
+      </div>
+
+      <form class="barra-filtros">
+        <div class="campo">
+          <label for="filtro-status">Status</label>
+          <select id="filtro-status" name="status">
+            <option value="">Todos</option>
+            <option value="recebido">recebido</option>
+            <option value="em-analise">em análise</option>
+            <option value="orcado">orçado</option>
+            <option value="aprovado">aprovado</option>
+            <option value="recusado">recusado</option>
+            <option value="pronto">pronto</option>
+            <option value="entregue">entregue</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-tipo">Tipo de produto</label>
+          <select id="filtro-tipo" name="tipo">
+            <option value="">Todos</option>
+            <option value="notebook">notebook</option>
+            <option value="desktop">desktop</option>
+            <option value="celular">celular</option>
+            <option value="impressora">impressora</option>
+            <option value="outro">outro</option>
+          </select>
+        </div>
+
+        <div class="campo campo-cresce">
+          <label for="filtro-busca">Buscar</label>
+          <input
+            type="search"
+            id="filtro-busca"
+            name="busca"
+            placeholder="Código, cliente ou modelo">
+        </div>
+
+        <button type="submit" class="botao botao-principal">Filtrar</button>
+      </form>
+    </section>
+
+    <!--
+      GRADE DE ORDENS
+      Quatro cartoes com dados fixos, escritos direto no HTML.
+      Na aula 3 esses cartoes passam a ser gerados por JavaScript a partir de um array.
+      A classe grade-ordens e a que voce vai transformar em grid no arquivo style.css.
+    -->
+    <section class="bloco">
+      <div class="grade-ordens">
+
+        <article class="cartao-ordem">
+          <div class="cartao-topo">
+            <span class="cartao-codigo">OS-2026-0001</span>
+            <span class="etiqueta etiqueta-em-analise">em análise</span>
+          </div>
+          <h2 class="cartao-titulo">Notebook Dell Inspiron 15</h2>
+          <p class="cartao-cliente">Marina Souza</p>
+          <p class="cartao-defeito">
+            Liga, mostra a logomarca e desliga sozinho depois de poucos segundos.
+          </p>
+          <dl class="lista-dados">
+            <div class="linha-dado">
+              <dt>Entrada</dt>
+              <dd>04/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Previsão</dt>
+              <dd>11/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Orçamento</dt>
+              <dd>a definir</dd>
+            </div>
+          </dl>
+          <div class="cartao-acoes">
+            <button type="button" class="botao botao-secundario">Editar</button>
+            <button type="button" class="botao botao-perigo">Excluir</button>
+          </div>
+        </article>
+
+        <article class="cartao-ordem">
+          <div class="cartao-topo">
+            <span class="cartao-codigo">OS-2026-0002</span>
+            <span class="etiqueta etiqueta-recebido">recebido</span>
+          </div>
+          <h2 class="cartao-titulo">Celular Samsung Galaxy A54</h2>
+          <p class="cartao-cliente">Rafael Lima</p>
+          <p class="cartao-defeito">
+            Tela trincada no canto inferior e touch sem resposta na parte de baixo.
+          </p>
+          <dl class="lista-dados">
+            <div class="linha-dado">
+              <dt>Entrada</dt>
+              <dd>05/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Previsão</dt>
+              <dd>12/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Orçamento</dt>
+              <dd>a definir</dd>
+            </div>
+          </dl>
+          <div class="cartao-acoes">
+            <button type="button" class="botao botao-secundario">Editar</button>
+            <button type="button" class="botao botao-perigo">Excluir</button>
+          </div>
+        </article>
+
+        <article class="cartao-ordem">
+          <div class="cartao-topo">
+            <span class="cartao-codigo">OS-2026-0003</span>
+            <span class="etiqueta etiqueta-orcado">orçado</span>
+          </div>
+          <h2 class="cartao-titulo">Impressora Epson L3250</h2>
+          <p class="cartao-cliente">Papelaria Central</p>
+          <p class="cartao-defeito">
+            Puxa duas folhas de cada vez e trava o papel na saída.
+          </p>
+          <dl class="lista-dados">
+            <div class="linha-dado">
+              <dt>Entrada</dt>
+              <dd>29/07/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Previsão</dt>
+              <dd>08/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Orçamento</dt>
+              <dd>R$ 180,00</dd>
+            </div>
+          </dl>
+          <div class="cartao-acoes">
+            <button type="button" class="botao botao-secundario">Editar</button>
+            <button type="button" class="botao botao-perigo">Excluir</button>
+          </div>
+        </article>
+
+        <article class="cartao-ordem">
+          <div class="cartao-topo">
+            <span class="cartao-codigo">OS-2026-0004</span>
+            <span class="etiqueta etiqueta-pronto">pronto</span>
+          </div>
+          <h2 class="cartao-titulo">Desktop montado Intel i5</h2>
+          <p class="cartao-cliente">Escritório Andrade</p>
+          <p class="cartao-defeito">
+            Reinicia sozinho durante o uso, com suspeita de fonte com defeito.
+          </p>
+          <dl class="lista-dados">
+            <div class="linha-dado">
+              <dt>Entrada</dt>
+              <dd>25/07/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Previsão</dt>
+              <dd>05/08/2026</dd>
+            </div>
+            <div class="linha-dado">
+              <dt>Orçamento</dt>
+              <dd>R$ 320,00</dd>
+            </div>
+          </dl>
+          <div class="cartao-acoes">
+            <button type="button" class="botao botao-secundario">Editar</button>
+            <button type="button" class="botao botao-perigo">Excluir</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!--
+      FORMULARIO DE ABERTURA DE ORDEM
+      Este formulario esta pela metade de proposito.
+      Os campos marcados com TODO sao a sua tarefa da pratica guiada.
+      Use como referencia a tabela do modelo de dados do arquivo
+      01-orientacoes-do-projeto.md, secao 3.
+    -->
+    <section class="bloco">
+      <h2>Abrir nova ordem</h2>
+      <p class="texto-apoio">
+        Os campos abaixo seguem exatamente o modelo de dados do projeto. O atributo name
+        de cada campo é o nome que vai chegar no servidor a partir da aula 4, então ele
+        precisa bater com o modelo.
+      </p>
+
+      <form class="form-ordem">
+
+        <fieldset>
+          <legend>Cliente</legend>
+
+          <div class="campo">
+            <label for="cliente-nome">Nome do cliente</label>
+            <input
+              type="text"
+              id="cliente-nome"
+              name="cliente.nome"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="cliente-telefone">Telefone</label>
+            <input
+              type="tel"
+              id="cliente-telefone"
+              name="cliente.telefone"
+              placeholder="(51) 90000-0000"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="cliente-email">E-mail</label>
+            <input
+              type="email"
+              id="cliente-email"
+              name="cliente.email"
+              placeholder="opcional">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Produto</legend>
+
+          <!--
+            TODO 1: campo produto.tipo
+            Crie um campo select com a label associada.
+            id: produto-tipo
+            name: produto.tipo
+            Opcoes: notebook, desktop, celular, impressora, outro
+            O campo e obrigatorio.
+            Copie a estrutura de um dos selects da barra de filtros como referencia.
+          -->
+
+            <div class="campo">
+              <label for="produto-tipo">Tipo de produto </label>
+              <select id="produto-tipo" name="produto.tipo" required>
+              <option value="">Selecione</option>
+              <option value="notebook">notebook</option>
+              <option value="desktop">desktop</option>
+              <option value="celular">celular</option>
+              <option value="impressora">impressora</option>
+              <option value="outro">outro</option>
+              </select>
+            </div>
+
+          <div class="campo">
+            <label for="produto-marca">Marca</label>
+            <input
+              type="text"
+              id="produto-marca"
+              name="produto.marca"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="produto-modelo">Modelo</label>
+            <input
+              type="text"
+              id="produto-modelo"
+              name="produto.modelo"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="produto-serie">Número de série</label>
+            <input
+              type="text"
+              id="produto-serie"
+              name="produto.numeroSerie"
+              placeholder="opcional">
+          </div>
+
+          <!--
+            TODO 2: campo acessorios
+            Crie um grupo de quatro checkboxes dentro de uma div com a classe
+            grupo-opcoes, todos com o mesmo name: acessorios
+            Valores: carregador, cabo, capa, bateria
+            Cada checkbox precisa de id proprio e de uma label associada a esse id.
+            Estrutura de cada item:
+            <div class="opcao">
+              <input type="checkbox" id="acessorio-carregador" name="acessorios" value="carregador">
+              <label for="acessorio-carregador">Carregador</label>
+            </div>
+          -->
+            <label> Acessórios recebidos</label>
+            <div class="grupo-opcoes">
+              <div class="opcao">
+                <input type="checkbox" id="acessorio-carregador" name="acessorios" value="carregador">
+                <label for="acessorio-carregador">Carregador</label>
+            </div>
+              <div class="opcao">
+                <input type="checkbox" id="acessorio-cabo" name="acessorios" value="cabo">
+                <label for="acessorio-cabo">Cabo</label>
+              </div>
+              <div class="opcao">
+                <input type="checkbox" id="acessorio-capa" name="acessorios" value="capa">
+                <label for="acessorio-capa">Capa</label>
+              </div>
+              <div class="opcao">
+                <input type="checkbox" id="acessorio-bateria" name="acessorios" value="bateria">
+                <label for="acessorio-bateria">Bateria</label>
+              </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Serviço</legend>
+
+          <div class="campo">
+            <label for="defeito">Defeito relatado</label>
+            <textarea
+              id="defeito"
+              name="defeitoRelatado"
+              rows="4"
+              placeholder="Descreva o problema exatamente como o cliente relatou"
+              required></textarea>
+          </div>
+
+          <!--
+            TODO 3: campo prioridade
+            Crie um grupo de dois radios dentro de uma div com a classe grupo-opcoes,
+            ambos com o mesmo name: prioridade
+            Valores: normal e urgente
+            O valor normal ja vem marcado por padrao, com o atributo checked.
+            Lembre-se: radios do mesmo grupo compartilham o name e por isso so um
+            pode ficar marcado por vez.
+          -->
+<label>prioridade</label>
+<div class="grupo-opcoes">
+  <div class="opcao">
+    <input type="radio" id="prioridade-normal" name="prioridade" value="normal" checked>
+    <label for="prioridade-normal">normal</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="prioridade-urgente" name="prioridade" value="urgente">
+      <label for="prioridade-urgente">urgente</label>
+    </div>
+</div>
+
+          <!--
+            TODO 4: campo dataPrevisao
+            Crie um input do tipo date com a label associada.
+            id: data-previsao
+            name: dataPrevisao
+            O campo e opcional, entao nao leva required.
+          -->
+<div class="campo">
+  <label for="data-previsao">Previsão de entrega</label>
+  <input type="date" id="data-previsao" name="dataPrevisao">
+</div>
+
+          <!--
+            TODO 5: campo valorOrcamento
+            Crie um input do tipo number com a label associada.
+            id: valor-orcamento
+            name: valorOrcamento
+            Aceita centavos, entao use step="0.01"
+            Nao aceita valor negativo, entao use min="0"
+            O campo e opcional.
+          -->
+            <div class="campo">
+              <label for="valor-orcamento">Valor do orçamento</label>
+              <input type="number" id="valor-orcamento" name="valorOrcamento" step="0.01" min="0">
+            </div>
+
+        </fieldset>
+
+        <div class="acoes-form">
+          <button type="submit" class="botao botao-principal">Salvar ordem</button>
+          <button type="reset" class="botao botao-secundario">Limpar</button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>OS Track | Painel administrativo | Aula 2: HTML e CSS</p>
+  </footer>
+
+</body>
+</html>

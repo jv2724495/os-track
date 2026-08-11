@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | OS Track</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pagina-login">
+
+  <main class="caixa-login">
+
+    <div class="marca marca-centralizada">
+      <span class="marca-simbolo">OS</span>
+      <div>
+        <p class="marca-nome">OS Track</p>
+        <p class="marca-slogan">Assistência técnica</p>
+      </div>
+    </div>
+
+    <h1>Área do técnico</h1>
+    <p class="texto-apoio">
+      Acesso restrito. Somente a equipe da assistência técnica entra nesta área.
+      O usuário administrador é criado pelo comando de seed do sistema.
+    </p>
+
+    <!--
+      O tipo password esconde os caracteres digitados na tela.
+      Isso e apenas visual: a protecao de verdade e o hash da senha no banco,
+      que sera implementado na aula 7 com a biblioteca bcryptjs.
+    -->
+    <form class="form-login">
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="tecnico@ostrack.com"
+          required>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          minlength="6"
+          required>
+      </div>
+
+      <button type="submit" class="botao botao-principal botao-largo">Entrar</button>
+    </form>
+
+    <p class="aviso-login">
+      Nesta aula o botão ainda não faz nada. A autenticação chega na aula 7.
+    </p>
+
+    <p class="voltar">
+      <a href="index.html">Voltar para a consulta pública</a>
+    </p>
+
+  </main>
+
+</body>
+</html>

@@ -1,34 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OS Track</title>
+  <title>Consulta de ordem de servico | OS Track</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ===================================================================== -->
-  <!-- TODO aluno: a partir da aula 2 voce vai substituir esta tela pela     -->
-  <!-- identidade da sua assistencia tecnica.                                -->
-  <!-- ===================================================================== -->
-
+  <!--
+    CABECALHO
+    A tag header marca o topo da pagina. A tag nav marca um bloco de navegacao.
+    Nenhuma das duas muda a aparencia sozinha: elas dizem ao navegador,
+    ao leitor de tela e ao buscador qual e o papel daquele trecho.
+  -->
   <header class="cabecalho">
-    <h1 class="cabecalho__titulo">OS Track</h1>
-    <p class="cabecalho__subtitulo">Template base da disciplina de Programacao para Internet</p>
+    <div class="marca">
+      <span class="marca-simbolo">OS</span>
+      <div>
+        <p class="marca-nome">OS Track</p>
+        <p class="marca-slogan">Assistência técnica</p>
+      </div>
+    </div>
+    <nav class="menu">
+      <a href="login.html">Área do técnico</a>
+    </nav>
   </header>
 
+  <!--
+    CONTEUDO PRINCIPAL
+    A tag main marca o conteudo central da pagina. Existe apenas uma por documento.
+  -->
   <main class="conteudo">
-    <p class="conteudo__texto">
-      A aplicacao esta no ar. A partir da aula 2 voce vai personalizar a identidade
-      visual do sistema com o nome e as cores da sua assistencia tecnica.
-    </p>
+
+    <section class="bloco bloco-destaque">
+      <h1>Acompanhe o seu equipamento</h1>
+      <p class="texto-apoio">
+        Informe o código que você recebeu na entrada do equipamento para ver a situação
+        atual do serviço. O código tem o formato OS-2026-0001 e está impresso no
+        comprovante entregue no balcão.
+      </p>
+
+      <!--
+        FORMULARIO DE CONSULTA
+        O atributo for da label aponta para o atributo id do input.
+        Isso liga os dois: clicar no texto da label coloca o cursor no campo,
+        e o leitor de tela anuncia o nome do campo corretamente.
+      -->
+      <form class="form-consulta">
+        <div class="campo">
+          <label for="codigo">Código da ordem</label>
+          <input
+            type="text"
+            id="codigo"
+            name="codigo"
+            placeholder="OS-2026-0001"
+            required>
+        </div>
+        <button type="submit" class="botao botao-principal">Consultar</button>
+      </form>
+    </section>
+
+    <!--
+      RESULTADO DA CONSULTA
+      Nesta aula os dados sao fixos, escritos direto no HTML.
+      Na aula 3 este bloco passa a ser gerado por JavaScript,
+      e na aula 6 os dados passam a vir do banco de dados.
+    -->
+    <section class="bloco">
+      <h2>Resultado da consulta</h2>
+
+      <article class="cartao-resultado">
+        <div class="cartao-topo">
+          <span class="cartao-codigo">OS-2026-0001</span>
+          <span class="etiqueta etiqueta-em-analise">em análise</span>
+        </div>
+
+        <h3 class="cartao-titulo">Notebook Dell Inspiron 15</h3>
+
+        <dl class="lista-dados">
+          <div class="linha-dado">
+            <dt>Entrada</dt>
+            <dd>04/08/2026</dd>
+          </div>
+          <div class="linha-dado">
+            <dt>Previsão</dt>
+            <dd>11/08/2026</dd>
+          </div>
+          <div class="linha-dado">
+            <dt>Situação</dt>
+            <dd>Equipamento em bancada, aguardando diagnóstico</dd>
+          </div>
+        </dl>
+
+        <p class="observacao">
+          A consulta pública mostra apenas produto, situação e previsão. Nenhum dado de
+          outro cliente e nenhuma observação técnica interna aparece aqui.
+        </p>
+      </article>
+    </section>
+
   </main>
 
   <footer class="rodape">
-    <p>Template base. Personalize a identidade a partir da aula 2.</p>
+    <p>OS Track | Sistema de ordens de serviço | Aula 2: HTML e CSS</p>
   </footer>
 
-  <script src="js/main.js"></script>
 </body>
 </html>

@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel administrativo | OS Track</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!--
+    ESTILO DA AULA 3
+    Esta regra estiliza a mensagem que aparece quando o filtro nao encontra
+    nenhuma ordem. Ela fica aqui dentro do admin.html de proposito, para voce
+    nao precisar mexer no seu style.css e manter a sua identidade da aula 2.
+  -->
+  <style>
+    .aviso-vazio {
+      grid-column: 1 / -1;
+      padding: 32px;
+      text-align: center;
+      color: #6b7280;
+      background-color: #f9fafb;
+      border: 1px dashed #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+  </style>
 </head>
 <body>
 
@@ -26,8 +45,10 @@
 
     <!--
       BARRA DE FILTROS
-      Os filtros ainda nao filtram nada: eles existem para a interface ficar pronta.
-      Passam a funcionar na aula 6, quando a listagem vier do banco de dados.
+      Na aula 2 estes filtros eram apenas visuais, nao filtravam nada.
+      Na aula 3 o filtro de status passa a funcionar de verdade, pelo admin.js.
+      O filtro de tipo e a busca continuam so na interface por enquanto:
+      eles ganham vida na aula 6, quando a listagem vier do banco de dados.
     -->
     <section class="bloco">
       <div class="titulo-secao">
@@ -77,142 +98,22 @@
 
     <!--
       GRADE DE ORDENS
-      Quatro cartoes com dados fixos, escritos direto no HTML.
-      Na aula 3 esses cartoes passam a ser gerados por JavaScript a partir de um array.
-      A classe grade-ordens e a que voce vai transformar em grid no arquivo style.css.
+
+      Na aula 2 esta grade vinha cheia, com quatro cartoes escritos a mao aqui
+      dentro. Na aula 3 ela comeca VAZIA: quem desenha os cartoes agora e o
+      JavaScript, no arquivo js/admin.js, a partir de um array. Ao abrir a
+      pagina, o admin.js preenche esta div sozinho.
     -->
     <section class="bloco">
       <div class="grade-ordens">
-
-        <article class="cartao-ordem">
-          <div class="cartao-topo">
-            <span class="cartao-codigo">OS-2026-0001</span>
-            <span class="etiqueta etiqueta-em-analise">em análise</span>
-          </div>
-          <h2 class="cartao-titulo">Notebook Dell Inspiron 15</h2>
-          <p class="cartao-cliente">Marina Souza</p>
-          <p class="cartao-defeito">
-            Liga, mostra a logomarca e desliga sozinho depois de poucos segundos.
-          </p>
-          <dl class="lista-dados">
-            <div class="linha-dado">
-              <dt>Entrada</dt>
-              <dd>04/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Previsão</dt>
-              <dd>11/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Orçamento</dt>
-              <dd>a definir</dd>
-            </div>
-          </dl>
-          <div class="cartao-acoes">
-            <button type="button" class="botao botao-secundario">Editar</button>
-            <button type="button" class="botao botao-perigo">Excluir</button>
-          </div>
-        </article>
-
-        <article class="cartao-ordem">
-          <div class="cartao-topo">
-            <span class="cartao-codigo">OS-2026-0002</span>
-            <span class="etiqueta etiqueta-recebido">recebido</span>
-          </div>
-          <h2 class="cartao-titulo">Celular Samsung Galaxy A54</h2>
-          <p class="cartao-cliente">Rafael Lima</p>
-          <p class="cartao-defeito">
-            Tela trincada no canto inferior e touch sem resposta na parte de baixo.
-          </p>
-          <dl class="lista-dados">
-            <div class="linha-dado">
-              <dt>Entrada</dt>
-              <dd>05/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Previsão</dt>
-              <dd>12/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Orçamento</dt>
-              <dd>a definir</dd>
-            </div>
-          </dl>
-          <div class="cartao-acoes">
-            <button type="button" class="botao botao-secundario">Editar</button>
-            <button type="button" class="botao botao-perigo">Excluir</button>
-          </div>
-        </article>
-
-        <article class="cartao-ordem">
-          <div class="cartao-topo">
-            <span class="cartao-codigo">OS-2026-0003</span>
-            <span class="etiqueta etiqueta-orcado">orçado</span>
-          </div>
-          <h2 class="cartao-titulo">Impressora Epson L3250</h2>
-          <p class="cartao-cliente">Papelaria Central</p>
-          <p class="cartao-defeito">
-            Puxa duas folhas de cada vez e trava o papel na saída.
-          </p>
-          <dl class="lista-dados">
-            <div class="linha-dado">
-              <dt>Entrada</dt>
-              <dd>29/07/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Previsão</dt>
-              <dd>08/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Orçamento</dt>
-              <dd>R$ 180,00</dd>
-            </div>
-          </dl>
-          <div class="cartao-acoes">
-            <button type="button" class="botao botao-secundario">Editar</button>
-            <button type="button" class="botao botao-perigo">Excluir</button>
-          </div>
-        </article>
-
-        <article class="cartao-ordem">
-          <div class="cartao-topo">
-            <span class="cartao-codigo">OS-2026-0004</span>
-            <span class="etiqueta etiqueta-pronto">pronto</span>
-          </div>
-          <h2 class="cartao-titulo">Desktop montado Intel i5</h2>
-          <p class="cartao-cliente">Escritório Andrade</p>
-          <p class="cartao-defeito">
-            Reinicia sozinho durante o uso, com suspeita de fonte com defeito.
-          </p>
-          <dl class="lista-dados">
-            <div class="linha-dado">
-              <dt>Entrada</dt>
-              <dd>25/07/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Previsão</dt>
-              <dd>05/08/2026</dd>
-            </div>
-            <div class="linha-dado">
-              <dt>Orçamento</dt>
-              <dd>R$ 320,00</dd>
-            </div>
-          </dl>
-          <div class="cartao-acoes">
-            <button type="button" class="botao botao-secundario">Editar</button>
-            <button type="button" class="botao botao-perigo">Excluir</button>
-          </div>
-        </article>
-
+        <!-- vazio de proposito: o admin.js preenche esta div -->
       </div>
     </section>
 
     <!--
       FORMULARIO DE ABERTURA DE ORDEM
-      Este formulario esta pela metade de proposito.
-      Os campos marcados com TODO sao a sua tarefa da pratica guiada.
-      Use como referencia a tabela do modelo de dados do arquivo
-      01-orientacoes-do-projeto.md, secao 3.
+      Este formulario ja foi completado na aula 2. Nada muda nele hoje.
+      Ele passa a enviar dados de verdade a partir da aula 4.
     -->
     <section class="bloco">
       <h2>Abrir nova ordem</h2>
@@ -224,188 +125,96 @@
 
       <form class="form-ordem">
 
-        <fieldset>
-          <legend>Cliente</legend>
+        <div class="campo">
+          <label for="cliente-nome">Nome do cliente</label>
+          <input type="text" id="cliente-nome" name="cliente.nome" required>
+        </div>
 
-          <div class="campo">
-            <label for="cliente-nome">Nome do cliente</label>
-            <input
-              type="text"
-              id="cliente-nome"
-              name="cliente.nome"
-              required>
-          </div>
+        <div class="campo">
+          <label for="cliente-telefone">Telefone</label>
+          <input type="tel" id="cliente-telefone" name="cliente.telefone" required>
+        </div>
 
-          <div class="campo">
-            <label for="cliente-telefone">Telefone</label>
-            <input
-              type="tel"
-              id="cliente-telefone"
-              name="cliente.telefone"
-              placeholder="(51) 90000-0000"
-              required>
-          </div>
+        <div class="campo">
+          <label for="cliente-email">E-mail</label>
+          <input type="email" id="cliente-email" name="cliente.email">
+        </div>
 
-          <div class="campo">
-            <label for="cliente-email">E-mail</label>
-            <input
-              type="email"
-              id="cliente-email"
-              name="cliente.email"
-              placeholder="opcional">
-          </div>
-        </fieldset>
+        <div class="campo">
+          <label for="produto-tipo">Tipo de produto</label>
+          <select id="produto-tipo" name="produto.tipo" required>
+            <option value="">Selecione</option>
+            <option value="notebook">notebook</option>
+            <option value="desktop">desktop</option>
+            <option value="celular">celular</option>
+            <option value="impressora">impressora</option>
+            <option value="outro">outro</option>
+          </select>
+        </div>
 
-        <fieldset>
-          <legend>Produto</legend>
+        <div class="campo">
+          <label for="produto-marca">Marca</label>
+          <input type="text" id="produto-marca" name="produto.marca" required>
+        </div>
 
-          <!--
-            TODO 1: campo produto.tipo
-            Crie um campo select com a label associada.
-            id: produto-tipo
-            name: produto.tipo
-            Opcoes: notebook, desktop, celular, impressora, outro
-            O campo e obrigatorio.
-            Copie a estrutura de um dos selects da barra de filtros como referencia.
-          -->
+        <div class="campo">
+          <label for="produto-modelo">Modelo</label>
+          <input type="text" id="produto-modelo" name="produto.modelo" required>
+        </div>
 
-            <div class="campo">
-              <label for="produto-tipo">Tipo de produto </label>
-              <select id="produto-tipo" name="produto.tipo" required>
-              <option value="">Selecione</option>
-              <option value="notebook">notebook</option>
-              <option value="desktop">desktop</option>
-              <option value="celular">celular</option>
-              <option value="impressora">impressora</option>
-              <option value="outro">outro</option>
-              </select>
-            </div>
+        <div class="campo campo-largo">
+          <label for="defeito-relatado">Defeito relatado</label>
+          <textarea id="defeito-relatado" name="defeitoRelatado" rows="3" required></textarea>
+        </div>
 
-          <div class="campo">
-            <label for="produto-marca">Marca</label>
-            <input
-              type="text"
-              id="produto-marca"
-              name="produto.marca"
-              required>
-          </div>
-
-          <div class="campo">
-            <label for="produto-modelo">Modelo</label>
-            <input
-              type="text"
-              id="produto-modelo"
-              name="produto.modelo"
-              required>
-          </div>
-
-          <div class="campo">
-            <label for="produto-serie">Número de série</label>
-            <input
-              type="text"
-              id="produto-serie"
-              name="produto.numeroSerie"
-              placeholder="opcional">
-          </div>
-
-          <!--
-            TODO 2: campo acessorios
-            Crie um grupo de quatro checkboxes dentro de uma div com a classe
-            grupo-opcoes, todos com o mesmo name: acessorios
-            Valores: carregador, cabo, capa, bateria
-            Cada checkbox precisa de id proprio e de uma label associada a esse id.
-            Estrutura de cada item:
+        <div class="campo campo-largo">
+          <label>Acessórios recebidos</label>
+          <div class="grupo-opcoes">
             <div class="opcao">
               <input type="checkbox" id="acessorio-carregador" name="acessorios" value="carregador">
               <label for="acessorio-carregador">Carregador</label>
             </div>
-          -->
-            <label> Acessórios recebidos</label>
-            <div class="grupo-opcoes">
-              <div class="opcao">
-                <input type="checkbox" id="acessorio-carregador" name="acessorios" value="carregador">
-                <label for="acessorio-carregador">Carregador</label>
+            <div class="opcao">
+              <input type="checkbox" id="acessorio-cabo" name="acessorios" value="cabo">
+              <label for="acessorio-cabo">Cabo</label>
             </div>
-              <div class="opcao">
-                <input type="checkbox" id="acessorio-cabo" name="acessorios" value="cabo">
-                <label for="acessorio-cabo">Cabo</label>
-              </div>
-              <div class="opcao">
-                <input type="checkbox" id="acessorio-capa" name="acessorios" value="capa">
-                <label for="acessorio-capa">Capa</label>
-              </div>
-              <div class="opcao">
-                <input type="checkbox" id="acessorio-bateria" name="acessorios" value="bateria">
-                <label for="acessorio-bateria">Bateria</label>
-              </div>
+            <div class="opcao">
+              <input type="checkbox" id="acessorio-capa" name="acessorios" value="capa">
+              <label for="acessorio-capa">Capa</label>
             </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Serviço</legend>
-
-          <div class="campo">
-            <label for="defeito">Defeito relatado</label>
-            <textarea
-              id="defeito"
-              name="defeitoRelatado"
-              rows="4"
-              placeholder="Descreva o problema exatamente como o cliente relatou"
-              required></textarea>
+            <div class="opcao">
+              <input type="checkbox" id="acessorio-bateria" name="acessorios" value="bateria">
+              <label for="acessorio-bateria">Bateria</label>
+            </div>
           </div>
+        </div>
 
-          <!--
-            TODO 3: campo prioridade
-            Crie um grupo de dois radios dentro de uma div com a classe grupo-opcoes,
-            ambos com o mesmo name: prioridade
-            Valores: normal e urgente
-            O valor normal ja vem marcado por padrao, com o atributo checked.
-            Lembre-se: radios do mesmo grupo compartilham o name e por isso so um
-            pode ficar marcado por vez.
-          -->
-<label>prioridade</label>
-<div class="grupo-opcoes">
-  <div class="opcao">
-    <input type="radio" id="prioridade-normal" name="prioridade" value="normal" checked>
-    <label for="prioridade-normal">normal</label>
-    </div>
-    <div class="opcao">
-      <input type="radio" id="prioridade-urgente" name="prioridade" value="urgente">
-      <label for="prioridade-urgente">urgente</label>
-    </div>
-</div>
-
-          <!--
-            TODO 4: campo dataPrevisao
-            Crie um input do tipo date com a label associada.
-            id: data-previsao
-            name: dataPrevisao
-            O campo e opcional, entao nao leva required.
-          -->
-<div class="campo">
-  <label for="data-previsao">Previsão de entrega</label>
-  <input type="date" id="data-previsao" name="dataPrevisao">
-</div>
-
-          <!--
-            TODO 5: campo valorOrcamento
-            Crie um input do tipo number com a label associada.
-            id: valor-orcamento
-            name: valorOrcamento
-            Aceita centavos, entao use step="0.01"
-            Nao aceita valor negativo, entao use min="0"
-            O campo e opcional.
-          -->
-            <div class="campo">
-              <label for="valor-orcamento">Valor do orçamento</label>
-              <input type="number" id="valor-orcamento" name="valorOrcamento" step="0.01" min="0">
+        <div class="campo campo-largo">
+          <label>Prioridade</label>
+          <div class="grupo-opcoes">
+            <div class="opcao">
+              <input type="radio" id="prioridade-normal" name="prioridade" value="normal" checked>
+              <label for="prioridade-normal">Normal</label>
             </div>
+            <div class="opcao">
+              <input type="radio" id="prioridade-urgente" name="prioridade" value="urgente">
+              <label for="prioridade-urgente">Urgente</label>
+            </div>
+          </div>
+        </div>
 
-        </fieldset>
+        <div class="campo">
+          <label for="data-previsao">Previsão de entrega</label>
+          <input type="date" id="data-previsao" name="dataPrevisao">
+        </div>
 
-        <div class="acoes-form">
-          <button type="submit" class="botao botao-principal">Salvar ordem</button>
-          <button type="reset" class="botao botao-secundario">Limpar</button>
+        <div class="campo">
+          <label for="valor-orcamento">Valor do orçamento</label>
+          <input type="number" id="valor-orcamento" name="valorOrcamento" step="0.01" min="0">
+        </div>
+
+        <div class="form-acoes">
+          <button type="submit" class="botao botao-principal">Abrir ordem</button>
         </div>
 
       </form>
@@ -414,8 +223,16 @@
   </main>
 
   <footer class="rodape">
-    <p>OS Track | Painel administrativo | Aula 2: HTML e CSS</p>
+    <p>OS Track, sistema de ordens de serviço. Projeto da disciplina Programação para Internet.</p>
   </footer>
+
+  <!--
+    LIGACAO DO JAVASCRIPT
+    Esta linha liga o arquivo js/admin.js a esta pagina. Ela fica no fim, pouco
+    antes do fecha body, para que o navegador leia todo o HTML acima antes de
+    rodar o script. Assim o admin.js encontra a grade e o formulario prontos.
+  -->
+  <script src="js/admin.js"></script>
 
 </body>
 </html>
